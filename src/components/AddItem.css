@@ -1,0 +1,47 @@
+.addItemContainer {
+    display: flex;
+    width:100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 20px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.categoryList .MuiFormControl-root {
+    width: 100%;
+}
+
+.textField {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+}
+
+.textField .MuiTextField-root {
+    width: 100%;
+}
+
+.submitButton {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.submitButton .MuiButton-root {
+    background-color: #1976d2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-align: center;
+    max-width: 200px;
+}
+
+.submitButton .MuiButton-root:hover {
+    background-color: #1565c0;
+}

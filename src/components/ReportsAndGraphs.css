@@ -1,0 +1,106 @@
+/* Container Styles */
+.reportsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* Form Styles - Right Side */
+.form {
+    width: 25%;
+    padding: 25px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    order: 3; /* Places the form on the right */
+}
+
+/* Input Fields Container */
+.inputFields {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+
+/* Individual Input Field Styling */
+.inputFields .MuiTextField-root,
+.inputFields .MuiFormControl-root {
+    width: 100%;
+}
+
+/* Toggle Button Container */
+.showReportbutton {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Show Report Button */
+.showReportbutton Button {
+    font-weight: 600;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+/* Chart Container - Middle */
+.chartContainer {
+    width: 45%;
+    order: 2; /* Places the chart in the middle */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Report Table Container - Left */
+.reportTable {
+    width: 25%;
+    order: 1; /* Places the table on the left */
+}
+
+/* Material-UI Components Overrides */
+.MuiButton-contained {
+    width: 100%;
+    padding: 10px 0;
+    font-weight: 600;
+}
+
+.MuiAlert-root {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .reportsContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .form {
+        width: 100%;
+        max-width: 400px;
+        order: 1;
+    }
+
+    .chartContainer {
+        width: 100%;
+        max-width: 800px;
+        order: 2;
+    }
+
+    .reportTable {
+        width: 100%;
+        max-width: 800px;
+        order: 3;
+    }
+}
