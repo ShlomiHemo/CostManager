@@ -73,13 +73,13 @@ button {
   .container {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "table"
       "add"
+      "table"
       "bottom";
     padding: 2rem;
     gap: 1.5rem;
   }
-  .tableContents, .addContents, .bottomSection {
+  .addContents, .tableContents, .bottomSection {
     min-height: auto;
   }
 }
