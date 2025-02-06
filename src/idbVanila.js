@@ -44,7 +44,6 @@ class CostsDB {
         return new Promise((resolve, reject) => {
             const transaction = this.db.transaction(["costs"], "readwrite");
             const store = transaction.objectStore("costs");
-
             const request = store.add({
                 sum: costItem.sum,
                 category: costItem.category,
@@ -74,10 +73,39 @@ class CostsDB {
         return new Promise((resolve, reject) => {
             const transaction = this.db.transaction(["costs"], "readwrite");
             const store = transaction.objectStore("costs");
-
             const request = store.delete(id);
 
             request.onsuccess = () => resolve(true);
+            request.onerror = () => reject(request.error);
+        });
+    }
+    // Filter costs by year
+    async getCostsByYear(year) {
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction(["costs"], "readonly");
+            const store = transaction.objectStore("costs");
+            const request = store.getAll();
+
+            request.onsuccess = () => {
+                const filteredData = request.result.filter((cost) => cost.date.startsWith(year));
+                resolve(filteredData);
+            };
+            request.onerror = () => reject(request.error);
+        });
+    }
+    // Filter costs by year and month
+    async getCostsByYearAndMonth(year, month) {
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction(["costs"], "readonly");
+            const store = transaction.objectStore("costs");
+            const request = store.getAll();
+
+            request.onsuccess = () => {
+                const filteredData = request.result.filter((cost) =>
+                    cost.date.startsWith(`${year}-${month}`)
+                );
+                resolve(filteredData);
+            };
             request.onerror = () => reject(request.error);
         });
     }

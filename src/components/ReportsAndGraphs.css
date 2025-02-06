@@ -1,4 +1,3 @@
-/* Container Styles */
 .reportsContainer {
     display: flex;
     flex-direction: row;
@@ -10,7 +9,6 @@
     padding: 0 20px;
 }
 
-/* Form Styles - Right Side */
 .form {
     width: 25%;
     padding: 25px;
@@ -20,10 +18,9 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    order: 3; /* Places the form on the right */
+    order: 3;
 }
 
-/* Input Fields Container */
 .inputFields {
     display: flex;
     flex-direction: column;
@@ -31,42 +28,36 @@
     gap: 15px;
 }
 
-/* Individual Input Field Styling */
 .inputFields .MuiTextField-root,
 .inputFields .MuiFormControl-root {
     width: 100%;
 }
 
-/* Toggle Button Container */
 .showReportbutton {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-/* Show Report Button */
 .showReportbutton Button {
     font-weight: 600;
     font-size: 0.9rem;
     width: 100%;
 }
 
-/* Chart Container - Middle */
 .chartContainer {
     width: 45%;
-    order: 2; /* Places the chart in the middle */
+    order: 2;
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
 
-/* Report Table Container - Left */
 .reportTable {
     width: 25%;
-    order: 1; /* Places the table on the left */
+    order: 1;
 }
 
-/* Material-UI Components Overrides */
 .MuiButton-contained {
     width: 100%;
     padding: 10px 0;
@@ -78,7 +69,6 @@
     margin-top: 10px;
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
     .reportsContainer {
         flex-direction: column;

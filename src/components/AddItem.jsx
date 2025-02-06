@@ -101,8 +101,6 @@ function AddItem({ costsDB, onItemAdded }) {
                     Add Item
                 </Button>
             </div>
-
-            {/* Display messages */}
             {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
             {successMessage && <Alert severity="success">{successMessage}</Alert>}
         </div>

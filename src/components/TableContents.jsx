@@ -12,7 +12,6 @@ function TableContents({ costsDB, refresh }) {
         if (!costsDB) {
             return;
         }
-
         async function fetchData() {
             try {
                 const fetchedCosts = await costsDB.getAllCosts();
@@ -22,7 +21,6 @@ function TableContents({ costsDB, refresh }) {
                 console.error("Error fetching data:", error);
             }
         }
-
         fetchData();
     }, [costsDB, refresh]);
 
@@ -40,7 +38,6 @@ function TableContents({ costsDB, refresh }) {
             console.error("Database not initialized");
             return;
         }
-
         try {
             // Delete selected items from the database
             for (const id of selectedRows) {

@@ -42,9 +42,7 @@ function createReportTable(props) {
 
 // Represents a single row in the report table with collapsible transaction details
 function Row({row}) {
-
     const [open, setOpen] = React.useState(false);
-
     return (
         <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -114,7 +112,6 @@ Row.propTypes = {
 
 export default function CollapsibleTable({props}) {
     const rows = createReportTable(props);
-
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <TableContainer

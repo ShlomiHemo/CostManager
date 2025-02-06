@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
@@ -6,11 +6,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import { Chart } from "react-google-charts";
+import {Chart} from "react-google-charts";
 import "./ReportsAndGraphs.css";
 import ReportTable from "./ReportTable.jsx";
 
-function ReportsAndGraphs({ costsDB }) {
+function ReportsAndGraphs({costsDB}) {
     // State for toggling between annual and monthly reports
     const [isAnnualReport, setIsAnnualReport] = useState(true);
 
@@ -59,44 +59,31 @@ function ReportsAndGraphs({ costsDB }) {
             setTimeout(() => setErrorMessage(null), 3000);
             return;
         }
-        if (isAnnualReport) {
-            const filteredYears = await handleFilterByYears();
+
+        if (isAnnualReport && costsDB) {
+            const filteredYears = await costsDB.getCostsByYear(year);
             setDataFiltered(filteredYears);
             pieDataFunction(filteredYears);
-        } else {
-            const filteredMonths = await handleFilterByMonths();
+
+        } else if (!isAnnualReport && costsDB) {
+            const filteredMonths = await costsDB.getCostsByYearAndMonth(year, month);
             setDataFiltered(filteredMonths);
             pieDataFunction(filteredMonths);
         }
     };
 
-    // Fetch and filter data by year
-    const handleFilterByYears = async () => {
-        if (!costsDB) {
-            console.error("Database is not initialized");
-            return [];
-        }
-        const dataFilterByYear = await costsDB.getAllCosts();
-        return dataFilterByYear.filter((cost) => cost.date.substring(0,4) === year);
-    };
-
-    // Fetch and filter data by month within the selected year
-    const handleFilterByMonths = async () => {
-        const filteredYears = await handleFilterByYears();
-        return filteredYears.filter((cost) => cost.date.substring(5, 7) === month);
-    };
 
     // Process filtered data for the pie chart
     const pieDataFunction = (filteredData) => {
         const aggregatedData = filteredData.reduce((acc, item) => {
             if (!acc[item.category]) {
-                acc[item.category] = { category: item.category, sum: 0 };
+                acc[item.category] = {category: item.category, sum: 0};
             }
             acc[item.category].sum += item.sum;
             return acc;
         }, {});
-        const chartData = [["Category", "Sum"], ...Object.values(aggregatedData).map(({ category, sum }) => [category, sum])];
-
+        const chartData = [["Category", "Sum"], ...Object.values(aggregatedData)
+            .map(({category, sum}) => [category, sum])];
         setData(chartData);
     };
 
@@ -112,8 +99,6 @@ function ReportsAndGraphs({ costsDB }) {
                         {isAnnualReport ? "Switch To Monthly Report" : "Switch To Annual Report"}
                     </Button>
                 </div>
-
-                {/* Input fields for year and optional month selection */}
                 <div className="inputFields">
                     <TextField
                         label="Year"
@@ -123,8 +108,6 @@ function ReportsAndGraphs({ costsDB }) {
                         onChange={handleYearChange}
                         fullWidth
                     />
-
-                    {/* Show month selection only when in monthly report mode */}
                     {!isAnnualReport && (
                         <FormControl fullWidth variant="outlined">
                             <InputLabel>Month</InputLabel>
@@ -152,8 +135,6 @@ function ReportsAndGraphs({ costsDB }) {
                     {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
                 </div>
             </div>
-
-            {/* Display the pie chart if data is available */}
             {data.length >= 1 && (
                 <div className="chartContainer">
                     <Chart
@@ -165,10 +146,8 @@ function ReportsAndGraphs({ costsDB }) {
                     />
                 </div>
             )}
-
-            {/* Display the report table with filtered data */}
             <div className="reportTable">
-                <ReportTable props={dataFiltered} />
+                <ReportTable props={dataFiltered}/>
             </div>
         </div>
     );
