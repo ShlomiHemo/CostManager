@@ -1,10 +1,17 @@
-# React + Vite
+# link to the webSite : https://costmanager-w6qw.onrender.com/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# CostManager
 
-Currently, two official plugins are available:
+CostManager — a personal finance management application that helps users track expenses, categorize spending, and visualize their financial data.
+The project demonstrates full-stack development skills, including frontend, backend, and database integration, while emphasizing clean code and usability.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# ⚡ Project Summary
 
-link to the webSite : https://costmanager-w6qw.onrender.com/
+CostManager is a web-based expense tracking application that allows users to:
+Add, edit, and delete expense items.
+Categorize expenses (e.g., Food, Transport, Entertainment).
+View summaries and reports of their spending.
+Track financial habits over time with a simple, intuitive interface.
+This project showcases practical skills in web development, data management, and user interface design.
+
+
